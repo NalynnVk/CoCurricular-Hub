@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/module', [ModuleController::class, 'index'])->name('modules.index');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');

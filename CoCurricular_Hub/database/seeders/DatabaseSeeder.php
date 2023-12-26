@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        // rujuk user model
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('password'),
+            'role' => 'admin'
+        ]);
     }
 }
