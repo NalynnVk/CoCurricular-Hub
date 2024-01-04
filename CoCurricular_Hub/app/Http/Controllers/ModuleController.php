@@ -92,4 +92,75 @@ class ModuleController extends Controller
         $modules->delete($modules);
         return redirect('/module')->with('success', 'Data Successfully Deleted');
     }
+
+    // STUDENT
+    public function studentModules()
+    {
+        $modules = Module::all(); // Assuming your model is named Module
+        return view('studentModules', ['modules' => $modules]);
+    }
+
+    public function showModuleDetails($id)
+    {
+        $module = Module::find($id);
+
+        if (!$module) {
+            return redirect('/student-modules')->with('error', 'Module not found');
+        }
+
+        return view('moduleDetails', ['module' => $module]);
+    }
+
+    //     public function studentModules()
+// {
+//     // Fetch enrolled modules for the authenticated user
+//     $enrolledModules = auth()->user()->enrolledModules;
+
+    //     return view('studentModules', ['enrolledModules' => $enrolledModules]);
+// }
+
+    // ModuleController.php
+
+    public function enrollModule($id)
+    {
+        $module = Module::find($id);
+
+        if (!$module) {
+            return redirect('/student-modules')->with('error', 'Module not found');
+        }
+
+        // Get the enrolled modules of the authenticated user
+        $enrolledModules = auth()->user()->enrolledModules;
+
+        // Check if the module is already enrolled
+        if ($enrolledModules->contains($module)) {
+            return redirect('/student-modules')->with('error', 'You are already enrolled in this module');
+        }
+
+        // Attach the module to the authenticated user
+        auth()->user()->enrolledModules()->attach($module);
+
+        return redirect('/student-modules')->with('success', 'Enrolled successfully');
+    }
+
+    public function studentEnrolledModules()
+    {
+        $enrolledModules = auth()->user()->enrolledModules;
+        return view('enrolledModules', ['enrolledModules' => $enrolledModules]);
+    }
+
+    public function unenrollModule($id)
+    {
+        $module = Module::find($id);
+
+        if (!$module) {
+            return redirect('/student-modules')->with('error', 'Module not found');
+        }
+
+        // Detach the module from the authenticated user
+        auth()->user()->enrolledModules()->detach($module);
+
+        return redirect('/student-modules')->with('success', 'Unenrolled successfully');
+    }
+
 }

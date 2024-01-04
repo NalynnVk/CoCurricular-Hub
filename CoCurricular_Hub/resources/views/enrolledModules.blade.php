@@ -81,7 +81,6 @@
             background-color: #dc3545;
             border-color: #dc3545;
         }
-
     </style>
 
 </head>
@@ -90,12 +89,11 @@
     @extends('layouts.app')
 
     @section('content')
-
         <!-- Creative header -->
         <div class="header">
             <div class="container">
-                <h1 class="display-4">🎓 Module Management 📚</h1>
-                <p class="lead">Explore and manage module information with ease</p>
+                <h1 class="display-4">🎓 Enrolled Modules 📚</h1>
+                <p class="lead">Explore and manage your enrolled modules</p>
             </div>
         </div>
 
@@ -108,52 +106,45 @@
             @endif
 
             <div class="row">
-                <!-- Add Student button -->
-                <div class="col-12 text-end add-button">
-                    <a href="{{ url('/module/create') }}" class="btn btn-primary">Create Module</a>
-                </div>
-
                 <!-- Table styling -->
-            <div class="col-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Venue</th>
-                            <th>Schedule</th>
-                            <th>Actions</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($modules as $module)
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td>{{ $module->id }}</td>
-                                <td>{{ $module->title }}</td>
-                                <td>{{ $module->description }}</td>
-                                <td>{{ $module->venue }}</td>
-                                <td>{{ $module->schedule }}</td>
-                                <td><a href="module/{{ $module->id }}/edit" class="btn btn-warning">Edit</a></td>
-                                <td><a href="module/{{ $module->id }}/delete"
-                                        onclick="return confirm('Are You Sure')" class="btn btn-danger">Delete</a></td>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Venue</th>
+                                <th>Schedule</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach ($enrolledModules as $module)
+                                <tr>
+                                    <td>{{ $module->id }}</td>
+                                    <td>{{ $module->title }}</td>
+                                    <td>{{ $module->description }}</td>
+                                    <td>{{ $module->venue }}</td>
+                                    <td>{{ $module->schedule }}</td>
+                                    <td>
+                                        <form action="{{ route('unenroll', ['id' => $module->id]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Unenroll</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <!-- Bootstrap JS bundle -->
-        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script> --}}
-
+        </div>
     @endsection
 
 </body>
 
 </html>
-

@@ -16,4 +16,9 @@ class Module extends Model
         'schedule',
         // Add other fields as needed
     ];
+
+    public function enrolledUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_module', 'module_id', 'user_id')->withTimestamps();
+    }
 }

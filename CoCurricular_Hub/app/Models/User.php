@@ -52,4 +52,20 @@ class User extends Authenticatable
     //         get: fn($value) => ["student", "instructor", "admin"][$value]
     //     );
     // }
+
+    public function enrolledModules()
+    {
+        return $this->belongsToMany(Module::class, 'user_module', 'user_id', 'module_id')->withTimestamps();
+    }
+
+    /**
+     * Enroll the user in a module.
+     *
+     * @param  Module  $module
+     * @return void
+     */
+    public function enrollModule(Module $module)
+    {
+        $this->enrolledModules()->attach($module);
+    }
 }

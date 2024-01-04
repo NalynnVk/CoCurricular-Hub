@@ -40,7 +40,7 @@ Route::get('/profile', function () {
 // Route::post('/module/instructor/submit', 'App\Http\Controllers\ModuleController@submit');
 
 // web.php
-
+// Instructor
 Route::get('/module', 'App\Http\Controllers\ModuleController@index');
 Route::get('/module/create', 'App\Http\Controllers\ModuleController@createForm');
 Route::post('/module/create', 'App\Http\Controllers\ModuleController@submitForm');
@@ -48,3 +48,20 @@ Route::get('/module/{id}/edit', 'App\Http\Controllers\ModuleController@edit');
 Route::put('/module/{id}/update', 'App\Http\Controllers\ModuleController@update');
 Route::get('/module/{id}/delete', 'App\Http\Controllers\ModuleController@delete');
 
+// Student
+Route::get('/student-modules', [ModuleController::class, 'studentModules'])->name('student-modules');
+Route::get('/module/{id}', [ModuleController::class, 'showModuleDetails'])->name('module-details');
+Route::post('/module/{id}/enroll', [ModuleController::class, 'enrollModule'])->name('enroll-module');
+Route::get('/student-enrolled-modules', [ModuleController::class, 'studentEnrolledModules'])->name('student-enrolled-modules');
+Route::delete('/unenroll/{id}', 'ModuleController@unenrollModule')->name('unenroll');
+// Route::get('/module/create', 'App\Http\Controllers\ModuleController@createForm');
+// Route::post('/module/create', 'App\Http\Controllers\ModuleController@submitForm');
+// Route::get('/module/{id}/edit', 'App\Http\Controllers\ModuleController@edit');
+// Route::put('/module/{id}/update', 'App\Http\Controllers\ModuleController@update');
+// Route::get('/module/{id}/delete', 'App\Http\Controllers\ModuleController@delete');
+
+
+
+// Profile
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
+Route::get('/edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');

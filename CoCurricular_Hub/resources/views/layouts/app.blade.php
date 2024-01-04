@@ -30,10 +30,10 @@
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('modules.index') }}">Module</a>
+                        <a class="nav-link" href="{{ url('/student-modules') }}">Module</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile.index') }}">Profile</a>
+                        <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
                     </li>
                 </ul>
 
