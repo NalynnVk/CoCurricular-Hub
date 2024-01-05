@@ -68,6 +68,13 @@
 
         <main>
             <div class="container">
+                <script>
+                    @if(session('success'))
+                        // Display JavaScript alert for success messages
+                        alert("{{ session('success') }}");
+                    @endif
+                </script>
+
                 <div class="course-details">
                     {{-- <img class="course-image" src="{{ $module->image_url }}" alt="{{ $module->title }}"> --}}
                     <div class="course-info">
@@ -79,7 +86,7 @@
                     </div>
                 </div>
 
-                <form action="{{ route('enroll-module', $module->id) }}" method="POST">
+                <form action="{{ route('enroll', $module->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-primary">Enroll</button>
                 </form>

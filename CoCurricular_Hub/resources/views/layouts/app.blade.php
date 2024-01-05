@@ -23,6 +23,7 @@
         .navbar {
             background-color: #3498db; /* Use your primary color */
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+
         }
 
         .navbar-brand {
@@ -77,9 +78,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a> --}}
 
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -89,7 +90,7 @@
                         <a class="nav-link" href="{{ url('/student-modules') }}">Module</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/student-enrolled-modules') }}">Enrollment</a>
+                        <a class="nav-link" href="{{ url('/enrolled-modules') }}">Enrollment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/profile') }}">Profile</a>

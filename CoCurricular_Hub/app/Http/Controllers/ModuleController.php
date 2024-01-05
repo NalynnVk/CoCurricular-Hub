@@ -121,46 +121,46 @@ class ModuleController extends Controller
 
     // ModuleController.php
 
-    public function enrollModule($id)
-    {
-        $module = Module::find($id);
+    // public function enrollModule($id)
+    // {
+    //     $module = Module::find($id);
 
-        if (!$module) {
-            return redirect('/student-modules')->with('error', 'Module not found');
-        }
+    //     if (!$module) {
+    //         return redirect('/student-modules')->with('error', 'Module not found');
+    //     }
 
-        // Get the enrolled modules of the authenticated user
-        $enrolledModules = auth()->user()->enrolledModules;
+    //     // Get the enrolled modules of the authenticated user
+    //     $enrolledModules = auth()->user()->enrolledModules;
 
-        // Check if the module is already enrolled
-        if ($enrolledModules->contains($module)) {
-            return redirect('/student-modules')->with('error', 'You are already enrolled in this module');
-        }
+    //     // Check if the module is already enrolled
+    //     if ($enrolledModules->contains($module)) {
+    //         return redirect('/student-modules')->with('error', 'You are already enrolled in this module');
+    //     }
 
-        // Attach the module to the authenticated user
-        auth()->user()->enrolledModules()->attach($module);
+    //     // Attach the module to the authenticated user
+    //     auth()->user()->enrolledModules()->attach($module);
 
-        return redirect('/student-modules')->with('success', 'Enrolled successfully');
-    }
+    //     return redirect('/student-modules')->with('success', 'Enrolled successfully');
+    // }
 
-    public function studentEnrolledModules()
-    {
-        $enrolledModules = auth()->user()->enrolledModules;
-        return view('enrolledModules', ['enrolledModules' => $enrolledModules]);
-    }
+    // public function studentEnrolledModules()
+    // {
+    //     $enrolledModules = auth()->user()->enrolledModules;
+    //     return view('enrolledModules', ['enrolledModules' => $enrolledModules]);
+    // }
 
-    public function unenrollModule($id)
-    {
-        $module = Module::find($id);
 
-        if (!$module) {
-            return redirect('/student-modules')->with('error', 'Module not found');
-        }
+    // public function unenroll($id)
+    // {
+    //     $enrolledModule = \App\Models\Enrollment::find($id);
 
-        // Detach the module from the authenticated user
-        auth()->user()->enrolledModules()->detach($module);
+    //     if (!$enrolledModule) {
+    //         return redirect()->back()->with('error', 'Module not found');
+    //     }
 
-        return redirect('/student-modules')->with('success', 'Unenrolled successfully');
-    }
+    //     $enrolledModule->delete();
+
+    //     return redirect()->back()->with('success', 'Successfully unenrolled from the module');
+    // }
 
 }

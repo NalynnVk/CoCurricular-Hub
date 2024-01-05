@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -38,9 +39,11 @@ Route::get('/module/{id}/delete', 'App\Http\Controllers\ModuleController@delete'
 // Student // http://127.0.0.1:8000/student-modules
 Route::get('/student-modules', [ModuleController::class, 'studentModules'])->name('student-modules');
 Route::get('/module/{id}', [ModuleController::class, 'showModuleDetails'])->name('module-details');
-Route::post('/module/{id}/enroll', [ModuleController::class, 'enrollModule'])->name('enroll-module');
-Route::get('/student-enrolled-modules', [ModuleController::class, 'studentEnrolledModules'])->name('student-enrolled-modules');
-Route::delete('/unenroll/{id}', 'ModuleController@unenrollModule')->name('unenroll');
+
+// Additional routes for EnrollmentController
+Route::post('/enroll/{id}', [EnrollmentController::class, 'enrollModule'])->name('enroll');
+Route::delete('/unenroll/{id}', [EnrollmentController::class, 'unenroll'])->name('unenroll');
+Route::get('/enrolled-modules', [EnrollmentController::class, 'studentEnrolledModules']);
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');

@@ -46,26 +46,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // protected function role(): Attribute
-    // {
-    //     return new Attribute(
-    //         get: fn($value) => ["student", "instructor", "admin"][$value]
-    //     );
-    // }
-
-    public function enrolledModules()
+    public function enrollments()
     {
-        return $this->belongsToMany(Module::class, 'user_module', 'user_id', 'module_id')->withTimestamps();
-    }
-
-    /**
-     * Enroll the user in a module.
-     *
-     * @param  Module  $module
-     * @return void
-     */
-    public function enrollModule(Module $module)
-    {
-        $this->enrolledModules()->attach($module);
+        return $this->hasMany(Enrollment::class);
     }
 }
