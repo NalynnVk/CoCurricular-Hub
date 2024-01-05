@@ -5,23 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Co-curricular Modules</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
-        body {
+        <style>body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1em;
+        .header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 1rem;
+            /* border-radius: 0 0 1rem 1rem; */
+            margin-bottom: 2rem;
             text-align: center;
         }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
 
         main {
             padding: 1em;
@@ -63,23 +70,28 @@
 
         .btn-details {
             width: 100%;
-            margin-top: auto; /* Push the button to the bottom */
+            margin-top: auto;
+            /* Push the button to the bottom */
         }
     </style>
 </head>
 {{-- <script>
-    @if(session('error'))
+    @if (session('error'))
         // Display JavaScript alert for error messages
         alert("{{ session('error') }}");
     @endif
 </script> --}}
+
 <body>
     @extends('layouts.app')
 
     @section('content')
-        <header>
-            <h1>Co-curricular Modules</h1>
-        </header>
+        <div class="header">
+            <div class="container">
+                <h1 class="display-4">🎓 Co-curricular Modules 📚</h1>
+                <p class="lead">Explore and manage your enrolled modules</p>
+            </div>
+        </div>
 
         <main>
             <div class="container">
@@ -105,9 +117,15 @@
             </div>
         </main>
 
-        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script> --}}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+        </script>
     @endsection
 </body>
 
