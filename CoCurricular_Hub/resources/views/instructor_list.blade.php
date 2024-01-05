@@ -110,7 +110,7 @@
             <div class="row">
                 <!-- Add Student button -->
                 <div class="col-12 text-end add-button">
-                    <a href="{{ url('/module/create') }}" class="btn btn-primary">Create Module</a>
+                    <a href="{{ url('/module-instructor/create') }}" class="btn btn-primary">Create Module</a>
                 </div>
 
                 <!-- Table styling -->
@@ -135,8 +135,8 @@
                                 <td>{{ $module->description }}</td>
                                 <td>{{ $module->venue }}</td>
                                 <td>{{ $module->schedule }}</td>
-                                <td><a href="module/{{ $module->id }}/edit" class="btn btn-warning">Edit</a></td>
-                                <td><a href="module/{{ $module->id }}/delete"
+                                <td><a href="module-instructor/{{ $module->id }}/edit" class="btn btn-warning">Edit</a></td>
+                                <td><a href="module-instructor/{{ $module->id }}/delete"
                                         onclick="return confirm('Are You Sure')" class="btn btn-danger">Delete</a></td>
                             </tr>
                         @endforeach

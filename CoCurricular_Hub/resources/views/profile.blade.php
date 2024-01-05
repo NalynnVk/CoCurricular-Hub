@@ -88,16 +88,16 @@
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" value="{{ $user->name }}" required>
 
-                    {{-- <label for="matricId">Matric ID:</label>
-                    <input type="text" id="matricId" name="matricId" value="{{ $user->matricId }}" required> --}}
+                    <label for="matric_id">Matric ID:</label>
+                    <input type="text" id="matric_id" name="matric_id" value="{{ $user->matric_id }}" required>
 
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" value="{{ $user->email }}" required>
 
-                    {{-- <label for="phoneNumber">Phone Number:</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" value="{{ $user->phoneNumber }}" required> --}}
+                    <label for="phone_number">Phone Number:</label>
+                    <input type="tel" id="phone_number" name="phone_number" value="{{ $user->phone_number }}" required>
 
-                    <button type="button" class="btn btn-primary btn-edit-profile" onclick="saveProfile()">Save Profile</button>
+                    {{-- <button type="button" class="btn btn-primary btn-edit-profile" onclick="saveProfile()">Save Profile</button> --}}
                 </form>
             </div>
         </div>
@@ -106,12 +106,12 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
 
-        <script>
+        {{-- <script>
             function saveProfile() {
                 // Add logic to handle form submission via AJAX or other methods
                 alert('Profile saved!');
             }
-        </script>
+        </script> --}}
     @endsection
 </body>
 

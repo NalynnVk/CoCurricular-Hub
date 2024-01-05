@@ -108,7 +108,7 @@
                             </div>
                             <div class="btn-details-container">
                                 <!-- Add logic for redirection or enrollment here -->
-                                <a href="{{ url("/module/{$module->id}") }}" class="btn btn-primary btn-details">View
+                                <a href="{{ url("/student-module-detail/{$module->id}") }}" class="btn btn-primary btn-details">View
                                     Details</a>
                             </div>
                         </div>

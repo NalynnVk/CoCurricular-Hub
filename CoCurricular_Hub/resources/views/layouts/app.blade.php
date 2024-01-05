@@ -87,10 +87,10 @@
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/student-modules') }}">Module</a>
+                        <a class="nav-link" href="{{ url('/student-module') }}">Module</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/enrolled-modules') }}">Enrollment</a>
+                        <a class="nav-link" href="{{ url('/enroll-module') }}">Enrollment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/profile') }}">Profile</a>

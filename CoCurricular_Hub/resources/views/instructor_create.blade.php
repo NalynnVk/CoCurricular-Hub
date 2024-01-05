@@ -75,7 +75,7 @@
 
 <body>
 
-    <form action="{{ url('/module/create') }}" method="post">
+    <form action="{{ url('/module-instructor/create') }}" method="post">
         @csrf
         {{-- needed @csrf token - if the token not the same, it would log out the user / won't direct user to other schedules --}}
         <h1>Module Information</h1>

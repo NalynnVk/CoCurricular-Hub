@@ -13,12 +13,12 @@ class EnrollmentController extends Controller
         $module = Module::find($id);
 
         if (!$module) {
-            return redirect('/student-modules')->with('error', 'Module not found');
+            return redirect('/student-module')->with('error', 'Module not found');
         }
 
         // Check if the user is already enrolled in this module
         if (auth()->user()->enrollments()->where('module_id', $id)->exists()) {
-            return redirect('/student-modules')->with('error', 'You are already enrolled in this module');
+            return redirect('/student-module')->with('error', 'You are already enrolled in this module');
         }
 
         // Enroll the user in the module
@@ -26,14 +26,15 @@ class EnrollmentController extends Controller
             'module_id' => $module->id,
         ]);
 
-        return redirect()->route('module-details', $module->id)->with('success', 'Enrolled successfully');
+        return redirect()->route('enroll-module', ['id' => $module->id])->with('success', 'Enrolled successfully');
+
     }
 
 
     public function studentEnrolledModules()
     {
-        $enrolledModules = auth()->user()->enrollments()->with('module')->get();
-        return view('enrolledModules', ['enrolledModules' => $enrolledModules]);
+        $enroll_module = auth()->user()->enrollments()->with('module')->get();
+        return view('enroll_module', ['enroll_module' => $enroll_module]);
     }
 
     // public function unenroll($id)
@@ -71,6 +72,7 @@ class EnrollmentController extends Controller
 
         $module = $enrollment->module; // Get the associated module
 
-        return redirect()->route('module-details', $module->id)->with('success', 'Successfully unenrolled from the module');
+        return redirect()->route('enroll-module')->with('success', 'Successfully unenrolled from the module');
+
     }
 }

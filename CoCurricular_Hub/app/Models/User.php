@@ -21,7 +21,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'matric_id',
         'email',
+        'phone_number',
         'password',
         'role',
     ];
@@ -49,5 +51,10 @@ class User extends Authenticatable
     public function enrollments()
     {
         return $this->hasMany(Enrollment::class);
+    }
+
+    public function hasRole($roles)
+    {
+        return in_array($this->role, $roles);
     }
 }

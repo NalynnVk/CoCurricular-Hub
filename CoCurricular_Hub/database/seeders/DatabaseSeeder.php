@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         // rujuk user model
         DB::table('users')->insert([
             'name' => 'admin',
+            // 'matric_id' => 'cb20000',
             'email' => 'admin@admin.com',
+            // 'phone_number' => '0000000000',
             'password' => bcrypt('password'),
             'role' => 'admin'
         ]);

@@ -81,7 +81,7 @@
             </div>
         @endif
     </div>
-    <form action="/module/{{$modules->id}}/update" method="POST">
+    <form action="/module-instructor/{{$modules->id}}/update" method="POST">
         {{ csrf_field() }}
         @method('PUT')
         <h1>Module Information</h1>

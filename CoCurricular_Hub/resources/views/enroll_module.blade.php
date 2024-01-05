@@ -117,7 +117,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($enrolledModules as $enrollment)
+                            @foreach ($enroll_module as $enrollment)
                                 <tr>
                                     <td>{{ $enrollment->module->id }}</td>
                                     <td>{{ $enrollment->module->title }}</td>
