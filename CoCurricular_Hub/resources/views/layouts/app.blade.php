@@ -86,16 +86,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/student-module') }}">Module</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/enroll-module') }}">Enrollment</a>
-                    </li>
+                    @if(Auth::check())
+                        @if(Auth::user()->hasRole('instructor'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/module-instructor') }}">Module</a>
+                            </li>
+                        @endif
+                        @if(Auth::user()->hasRole('student'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/student-module') }}">Module</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/enroll-module') }}">Enrollment</a>
+                            </li>
+                        @endif
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
                     </li>
                 </ul>
+
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
