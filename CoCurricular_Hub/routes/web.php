@@ -25,6 +25,10 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
 // Instructor CRUD // http://127.0.0.1:8000/module-instructor
 Route::middleware(['auth', 'role:instructor'])->group(function () {
     Route::get('/module-instructor', 'App\Http\Controllers\ModuleController@index');

@@ -5,18 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> --}}
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
         }
 
-        header {
+        .header {
             background-color: #343a40;
-            color: white;
-            padding: 1em;
+            color: #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 28px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
@@ -78,10 +85,14 @@
     @extends('layouts.app')
 
     @section('content')
-        <div class="container profile-container">
-            <div class="profile-header">
-                <h1>User Profile</h1>
+            <!-- Creative header -->
+            <div class="header">
+                <div class="container">
+                    <h1 class="display-4">🎓 Profile 📚</h1>
+                    <p class="lead">Explore and manage profile information with ease</p>
+                </div>
             </div>
+        <div class="container profile-container">
             <div class="profile-body">
                 <form id="profileForm" class="profile-info-form">
                     <label for="name">Name:</label>
@@ -101,10 +112,10 @@
             </div>
         </div>
 
-        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script> --}}
     @endsection
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

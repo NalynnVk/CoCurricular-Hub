@@ -21,7 +21,7 @@
         }
 
         .navbar {
-            background-color: #9774a1; /* Use your primary color */
+            background-color: #aac8e3; /* Use your primary color */
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 
         }
@@ -82,27 +82,53 @@
                     {{ config('app.name', 'Laravel') }}
                 </a> --}}
 
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                    </li>
+                {{-- <ul class="navbar-nav me-auto">
                     @if(Auth::check())
                         @if(Auth::user()->hasRole('instructor'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/module-instructor') }}">Module</a>
+                                <b><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></b>
                             </li>
                         @endif
                         @if(Auth::user()->hasRole('student'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/student-module') }}">Module</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/enroll-module') }}">Enrollment</a>
+                                <b><a class="nav-link" href="{{ url('/home') }}">Home</a></b>
                             </li>
                         @endif
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
+                        <b><a class="nav-link" href="{{ url('/profile') }}">Profile</a></b>
+                    </li>
+                </ul> --}}
+                <ul class="navbar-nav me-auto">
+                    @if(Auth::check())
+                        @if(Auth::user()->hasRole('instructor'))
+                            <li class="nav-item">
+                                <b><a class="nav-link" href="{{ url('/dashboard') }}">Dashboard</a></b>
+                            </li>
+                        @endif
+                        @if(Auth::user()->hasRole('student'))
+                            <li class="nav-item">
+                                <b><a class="nav-link" href="{{ url('/home') }}">Home</a></b>
+                            </li>
+                        @endif
+                    @endif
+                    @if(Auth::check())
+                        @if(Auth::user()->hasRole('instructor'))
+                            <li class="nav-item">
+                                <b><a class="nav-link" href="{{ url('/module-instructor') }}">Module</a></b>
+                            </li>
+                        @endif
+                        @if(Auth::user()->hasRole('student'))
+                            <li class="nav-item">
+                                <b><a class="nav-link" href="{{ url('/student-module') }}">Module</a></b>
+                            </li>
+                            <li class="nav-item">
+                                <b><a class="nav-link" href="{{ url('/enroll-module') }}">Enrollment</a></b>
+                            </li>
+                        @endif
+                    @endif
+                    <li class="nav-item">
+                        <b><a class="nav-link" href="{{ url('/profile') }}">Profile</a></b>
                     </li>
                 </ul>
 

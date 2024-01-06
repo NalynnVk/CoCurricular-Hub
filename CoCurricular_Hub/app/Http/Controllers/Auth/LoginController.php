@@ -12,11 +12,21 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Check if the authenticated user has the correct role
+        if ($user->role == 'instructor') {
+            return redirect('/dashboard');
+        } elseif ($user->role == 'student') {
+            return redirect('/home');
+        }
+
+        return redirect(RouteServiceProvider::HOME);
     }
 
     public function login(Request $request)
@@ -44,8 +54,8 @@ class LoginController extends Controller
             ]);
         }
 
-        // Authentication successful, redirect to the intended path
-        return redirect()->intended($this->redirectPath());
+        // Authentication successful, redirect handled in the authenticated method
+        return $this->authenticated($request, Auth::user());
     }
 
     protected function credentials(Request $request)

@@ -5,28 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Details</title>
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
-
-    <!-- Add your additional styles here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: 'Kanit', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1em;
+        .header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
         }
 
-        main {
-            padding: 2em;
+        h1 {
+            color: #343a40;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .course-details {
@@ -53,23 +53,26 @@
     </style>
 </head>
 <script>
-    @if(session('error'))
+    @if (session('error'))
         // Display JavaScript alert for error messages
         alert("{{ session('error') }}");
     @endif
 </script>
+
 <body>
     @extends('layouts.app')
 
     @section('content')
-        <header>
-            <h1>Course Details</h1>
-        </header>
-
+        <div class="header">
+            <div class="container">
+                <h1 class="display-4">🎓 Module Management 📚</h1>
+                <p class="lead">Explore and manage module information with ease</p>
+            </div>
+        </div>
         <main>
             <div class="container">
                 <script>
-                    @if(session('success'))
+                    @if (session('success'))
                         // Display JavaScript alert for success messages
                         alert("{{ session('success') }}");
                     @endif
@@ -92,11 +95,10 @@
                 </form>
             </div>
         </main>
-
-        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script> --}}
     @endsection
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

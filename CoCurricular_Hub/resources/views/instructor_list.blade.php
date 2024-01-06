@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Data</title>
-
-    <!-- Use the latest Bootstrap version -->
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -22,20 +18,16 @@
         .header {
             background-color: #343a40;
             color: #ffffff;
-            padding: 1rem;
-            /* border-radius: 0 0 1rem 1rem; */
+            padding: 2rem;
             margin-bottom: 2rem;
             text-align: center;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .lead {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
+            color: #343a40;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .container {
@@ -81,7 +73,6 @@
             background-color: #dc3545;
             border-color: #dc3545;
         }
-
     </style>
 
 </head>
@@ -90,7 +81,6 @@
     @extends('layouts.app')
 
     @section('content')
-
         <!-- Creative header -->
         <div class="header">
             <div class="container">
@@ -114,46 +104,42 @@
                 </div>
 
                 <!-- Table styling -->
-            <div class="col-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Venue</th>
-                            <th>Schedule</th>
-                            <th>Actions</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($modules as $module)
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td>{{ $module->id }}</td>
-                                <td>{{ $module->title }}</td>
-                                <td>{{ $module->description }}</td>
-                                <td>{{ $module->venue }}</td>
-                                <td>{{ $module->schedule }}</td>
-                                <td><a href="module-instructor/{{ $module->id }}/edit" class="btn btn-warning">Edit</a></td>
-                                <td><a href="module-instructor/{{ $module->id }}/delete"
-                                        onclick="return confirm('Are You Sure')" class="btn btn-danger">Delete</a></td>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Venue</th>
+                                <th>Schedule</th>
+                                <th>Actions</th>
+                                <th>Actions</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach ($modules as $module)
+                                <tr>
+                                    <td>{{ $module->id }}</td>
+                                    <td>{{ $module->title }}</td>
+                                    <td>{{ $module->description }}</td>
+                                    <td>{{ $module->venue }}</td>
+                                    <td>{{ $module->schedule }}</td>
+                                    <td><a href="module-instructor/{{ $module->id }}/edit"
+                                            class="btn btn-warning">Edit</a></td>
+                                    <td><a href="module-instructor/{{ $module->id }}/delete"
+                                            onclick="return confirm('Are You Sure')" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-
-        <!-- Bootstrap JS bundle -->
-        {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script> --}}
-
     @endsection
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
