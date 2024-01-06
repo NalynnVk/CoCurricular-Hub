@@ -21,7 +21,7 @@
         }
 
         .navbar {
-            background-color: #3498db; /* Use your primary color */
+            background-color: #9774a1; /* Use your primary color */
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 
         }
