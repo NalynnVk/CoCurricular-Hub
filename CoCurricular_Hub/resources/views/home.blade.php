@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Student Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -45,7 +46,12 @@
             color: #333;
         }
 
+
         /* Add your additional styling here */
+        #calendar {
+            max-width: 900px;
+            margin: 20px auto;
+        }
     </style>
 </head>
 
@@ -60,33 +66,50 @@
         <div class="container mt-4">
             <div class="dashboard-container">
                 <h1 class="mb-4">Welcome, {{ Auth::user()->name }}!</h1>
-                <p class="lead">SAS Co-curricular Hub is a comprehensive web-based application developed on the Laravel
-                    framework, specifically designed to serve as a centralized hub for managing co-curricular activities
-                    within the SMK Sultanah Asma community. Recognizing the pivotal role those co-curricular
-                    activities play in the holistic development of students, this platform aims to provide an organized and
-                    user-friendly solution for students to engage with, manage, and derive maximum benefit from their
-                    co-curricular experiences. The project addresses the need for an efficient system to manage co-curricular activities, fostering a
-                    more organized and engaging experience for SMK Sultanah Asma students. The main objectives include:
-                </p>
-                <p>
-                    • Simplifying the module enrolment process.
-                </p>
-                <p>
-                    • Providing a centralized dashboard for schedule management.
-                </p>
-                <p>
-                    • Offering a seamless booking system for co-curricular modules.
-                </p>
-                <p>
-                    • Facilitating easy access to and management of student profiles.
-                </p>
+
+                <!-- FullCalendar integration -->
+                <div id="calendar"></div>
+
                 <!-- Add more content and features as needed -->
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                // Fetch enrolled modules from the server
+                var enrolledModules = <?php echo json_encode($enroll_module); ?>;
+
+                // Prepare events array for FullCalendar
+                var events = enrolledModules.map(function (enrollment) {
+                    return {
+                        title: enrollment.module.title,
+                        start: enrollment.module.schedule,
+                        description: enrollment.module.description,
+                    };
+                });
+
+                // Initialize FullCalendar
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    events: events,
+                    eventClick: function (event) {
+                        // Handle event click, you can show module details here
+                        alert('Module: ' + event.title + '\nDescription: ' + event.description);
+                    }
+                });
+            });
+        </script>
     @endsection
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

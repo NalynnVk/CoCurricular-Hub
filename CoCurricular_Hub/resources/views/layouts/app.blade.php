@@ -78,9 +78,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Sultanah Asma School
+                </a>
 
                 {{-- <ul class="navbar-nav me-auto">
                     @if(Auth::check())

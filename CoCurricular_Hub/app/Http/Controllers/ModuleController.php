@@ -71,4 +71,12 @@ class ModuleController extends Controller
 
         return view('student_module_detail', ['module' => $module]);
     }
+
+
+    public function instructorModules()
+    {
+        $modules = Module::all(); // Assuming your model is named Module
+        return view('dashboard', ['modules' => $modules]);
+    }
+
 }

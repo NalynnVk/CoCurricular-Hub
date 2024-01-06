@@ -27,7 +27,6 @@ class EnrollmentController extends Controller
         ]);
 
         return redirect()->route('enroll-module', ['id' => $module->id])->with('success', 'Enrolled successfully');
-
     }
 
 
@@ -73,6 +72,11 @@ class EnrollmentController extends Controller
         $module = $enrollment->module; // Get the associated module
 
         return redirect()->route('enroll-module')->with('success', 'Successfully unenrolled from the module');
+    }
 
+    public function studentSchedule()
+    {
+        $enroll_module = auth()->user()->enrollments()->with('module')->get();
+        return view('home', ['enroll_module' => $enroll_module]);
     }
 }

@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,6 +31,7 @@ Route::get('/dashboard', function () {
 
 // Instructor CRUD // http://127.0.0.1:8000/module-instructor
 Route::middleware(['auth', 'role:instructor'])->group(function () {
+    Route::get('/dashboard', 'App\Http\Controllers\ModuleController@instructorModules');
     Route::get('/module-instructor', 'App\Http\Controllers\ModuleController@index');
     Route::get('/module-instructor/create', 'App\Http\Controllers\ModuleController@createForm');
     Route::post('/module-instructor/create', 'App\Http\Controllers\ModuleController@submitForm');
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'role:instructor'])->group(function () {
 
 // Student // http://127.0.0.1:8000/student-module
 Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('/home', [EnrollmentController::class, 'studentSchedule'])->name('home');
     Route::get('/student-module', 'App\Http\Controllers\ModuleController@studentModules');
     Route::get('/student-module-detail/{id}', 'App\Http\Controllers\ModuleController@showModuleDetails')->name('student-module-detail');
     Route::get('/enroll-module', [EnrollmentController::class, 'studentEnrolledModules'])->name('enroll-module');
@@ -50,4 +52,6 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
-// Route::post('/update-profile', 'UserProfileController@update')->name('update.profile');
+
+
+

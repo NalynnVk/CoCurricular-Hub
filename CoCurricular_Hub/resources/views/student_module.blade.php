@@ -89,7 +89,7 @@
         <div class="header">
             <div class="container">
                 <h1 class="display-4">🎓 Co-curricular Modules 📚</h1>
-                <p class="lead">Explore and manage your enrolled modules</p>
+                <p class="lead">Explore the available modules</p>
             </div>
         </div>
 
